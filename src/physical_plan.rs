@@ -46,7 +46,7 @@ impl PhysicalPlan for FilterExec {
         vec![Arc::clone(&self.input)]
     }
 
-    fn execute(&self) -> Result<RecordBatchStream, Error> {
+    fn execute(&self) -> Result<RecordBatchStream, std::io::Error> {
         let input_stream = self.input.execute()?;
         let predicate = Arc::clone(&self.predicate);
 
