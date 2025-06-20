@@ -1,9 +1,9 @@
-use std::sync::Arc;
 use crate::data_source::DataSource;
 use crate::data_type::{RecordBatchStream, Schema};
 use crate::physical_plan::PhysicalPlan;
+use std::sync::Arc;
 
-struct ScanExec {
+pub struct ScanExec {
     source: Box<dyn DataSource>,
     projection: Vec<String>,
 }

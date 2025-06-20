@@ -1,8 +1,8 @@
-use std::sync::Arc;
 use crate::data_type::{RecordBatchStream, Schema};
 use crate::physical_plan::{Expression, PhysicalPlan};
+use std::sync::Arc;
 
-struct FilterExec {
+pub struct FilterExec {
     input: Arc<dyn PhysicalPlan>,
     predicate: Arc<dyn Expression>,
 }

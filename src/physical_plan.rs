@@ -1,6 +1,7 @@
-mod scan;
-mod filter;
-mod project;
+pub mod filter;
+pub mod join;
+pub mod project;
+pub mod scan;
 
 use crate::data_source::DataSource;
 use crate::data_type::{ColumnVector, RecordBatch, RecordBatchStream, Schema};

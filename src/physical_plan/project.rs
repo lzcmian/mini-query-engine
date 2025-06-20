@@ -3,7 +3,7 @@ use crate::physical_plan::{Expression, PhysicalPlan};
 use anyhow::Context;
 use std::sync::Arc;
 
-struct ProjectionExec {
+pub struct ProjectionExec {
     input: Arc<dyn PhysicalPlan>,
     schema: Schema,
     expr: Vec<Arc<dyn Expression>>, // 顺序与schema要求的顺序保持一致

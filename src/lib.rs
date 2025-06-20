@@ -1,4 +1,4 @@
-mod logical_plan;
-mod data_source;
-mod data_type;
-mod physical_plan;
+pub mod data_source;
+pub mod data_type;
+pub mod logical_plan;
+pub mod physical_plan;
