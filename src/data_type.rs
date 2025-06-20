@@ -124,7 +124,7 @@ impl Schema {
 
 #[derive(Clone)]
 pub struct RecordBatch {
-    schema: Schema,
+    pub(crate) schema: Schema,
     fields: Vec<ColumnVector>,
 }
 

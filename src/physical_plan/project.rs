@@ -24,9 +24,15 @@ impl PhysicalPlan for ProjectionExec {
             .execute()
             .context("Failed to execute projection: error executing child physical plan")?;
 
-        let projected_stream = input_stream.map(|batch_result| {
-            batch_result
-                .and_then(|batch| self.expr.iter().map(|expr| expr.evaluate(&batch)).collect())
+        let schema = self.schema.clone();
+        let expr = self.expr.clone();
+
+        let projected_stream = input_stream.map(move |batch_result| {
+            batch_result.and_then(|batch| {
+                // transform batch to new batch
+                let fields = expr.iter().map(|e| e.evaluate(&batch)).collect::<Vec<_>>();
+                Ok(RecordBatch::new(schema.clone(), fields))
+            })
         });
 
         Ok(Box::new(projected_stream))
