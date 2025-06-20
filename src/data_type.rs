@@ -181,4 +181,4 @@ impl RecordBatch {
     }
 }
 
-pub type RecordBatchStream = Box<dyn Iterator<Item = Result<RecordBatch, std::io::Error>>>;
+pub type RecordBatchStream = Box<dyn Iterator<Item = anyhow::Result<RecordBatch>>>;
